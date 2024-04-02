@@ -7,7 +7,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="{{ asset('./assets/admin/css/admin.css') }}">
+  <link rel="stylesheet" href="{{ asset('/assets/admin/css/admin.css') }}">
 
   <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
   <script>
@@ -315,15 +315,14 @@ window.location.pathname;
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{ asset('./assets/admin/js/admin.js') }}"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
-<script src="{{ asset('./assets/admin/ckfinder/ckfinder.js') }}"></script>
+<script src="{{ asset('/assets/admin/ckfinder/ckfinder.js') }}"></script>
 
 <script>
      ClassicEditor
         .create( document.querySelector( '#content' ), {
             ckfinder: {
-                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+                uploadUrl: 'http://127.0.0.1:8000/assets/admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
             },
             toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
         } )
@@ -332,11 +331,13 @@ window.location.pathname;
         } );
 
     ClassicEditor
-      .create( document.querySelector( '#description' ) )
+      .create( document.querySelector( '#description' ), {
+        toolbar: [ 'undo', 'redo', '|', 'heading', '|', 'bold', 'italic', '|', 'link', 'bulletedlist', 'numberedlist' ]
+      } )
       .catch( error => {
           console.error( error );
     });
   </script>
-  <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+  <script>CKFinder.config( { connectorPath: 'http://127.0.0.1:8000/assets/admin/ckfinder/connector' } );</script>
 </body>
 </html>
