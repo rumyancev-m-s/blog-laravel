@@ -18,6 +18,11 @@ Route::group(['middleWare' => 'guest'], function () {
     Route::post('/register/auth','App\Http\Controllers\RegistrationController@store')->name('register.store');
 });
 
+Route::prefix('content')->group(function () {
+    Route::get('/posts','App\Http\Controllers\ContentController@index')->name('user.index');
+    Route::get('/post/{slug}','App\Http\Controllers\ContentController@single')->name('user.single');
+})->middleware(['user']);
+
 Route::group(['middleWare' => 'auth'], function () {
     Route::get('/logout', 'App\Http\Controllers\LogoutController@perform')->name('logout.perform');
 });

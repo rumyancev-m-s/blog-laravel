@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class Post extends Model {
     use Sluggable;
@@ -36,6 +37,11 @@ class Post extends Model {
             return asset("no-image.png");
         }
         return asset("uploads/{$this->thumbnail}");
+    }
+
+    public function getPostDate()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
     }
 
     public function sluggable():array    {

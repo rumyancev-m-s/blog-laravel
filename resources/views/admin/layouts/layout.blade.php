@@ -303,7 +303,7 @@ window.location.pathname;
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -324,7 +324,7 @@ window.location.pathname;
             ckfinder: {
                 uploadUrl: 'http://127.0.0.1:8000/assets/admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
             },
-            toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+            toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'link', 'bulletedlist', 'numberedlist', '|', 'undo', 'redo' ]
         } )
         .catch( function( error ) {
             console.error( error );
@@ -332,7 +332,7 @@ window.location.pathname;
 
     ClassicEditor
       .create( document.querySelector( '#description' ), {
-        toolbar: [ 'undo', 'redo', '|', 'heading', '|', 'bold', 'italic', '|', 'link', 'bulletedlist', 'numberedlist' ]
+        toolbar: [ 'undo', 'redo', '|', 'heading', '|', 'bold', 'italic', '|', 'link' ]
       } )
       .catch( error => {
           console.error( error );
