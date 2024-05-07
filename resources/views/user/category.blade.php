@@ -1,8 +1,9 @@
 @extends('user.layouts.layout')
 
 @section('content')
-<div class="card-columns">
     @if(count($posts))
+<h2>{{ $category->title }}</h2>
+    <div class="card-columns">
         @foreach($posts as $post)
             <div class="card">
                 <a href="{{ route('user.single', ['slug' => $post->slug ]) }}">

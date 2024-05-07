@@ -18,9 +18,20 @@ class ContentController extends Controller {
 
     public function single($slug) {
         $posts = Post::where('slug', $slug)->firstOrFail();
-        $categories = Category::pluck('id','title')->all();
-        $tags = Tag::pluck('id','title')->all();
-        // var_dump($posts);
+        $posts->views += 1;
+        $posts->update();
         return view("user.single", compact("posts"));
+    }
+
+    public function category($slug) {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $posts = Post::where('category_id', $category->id)->get();
+        return view("user.category", compact("posts","category"));
+    }
+
+    public function tag($slug) {
+        $tag = Tag::where('slug', $slug)->firstOrFail();
+        $posts = $tag->posts()->with('category')->paginate(15);
+        return view("user.tag", compact("posts","tag"));
     }
 }

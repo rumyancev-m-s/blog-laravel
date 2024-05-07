@@ -21,6 +21,8 @@ Route::group(['middleWare' => 'guest'], function () {
 Route::prefix('content')->group(function () {
     Route::get('/posts','App\Http\Controllers\ContentController@index')->name('user.index');
     Route::get('/post/{slug}','App\Http\Controllers\ContentController@single')->name('user.single');
+    Route::get('/category/{slug}','App\Http\Controllers\ContentController@category')->name('user.category');
+    Route::get('/tag/{slug}','App\Http\Controllers\ContentController@tag')->name('user.tag');
 })->middleware(['user']);
 
 Route::group(['middleWare' => 'auth'], function () {

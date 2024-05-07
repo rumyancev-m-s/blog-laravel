@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::paginate(15);
+        $posts = Post::paginate(25);
         return view("post.index", compact("posts"));
 
     }
@@ -57,6 +57,8 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
+
+        $folder = date('Y-m-d');
 
         $data['thumbnail'] = Post::uploadImage($request);
 
